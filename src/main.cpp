@@ -4,6 +4,7 @@
 
 #include "config.h"
 #include "shader.h"
+#include "triangle_mesh.h"
 
 
 int main()
@@ -19,11 +20,14 @@ int main()
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
+        std::cout << "GLAD failed to run its loader!\n";
         glfwTerminate();
         return -1;
     }
 
-    glClearColor(0.5f, 0.0f, 0.0f, 1.0f);
+    glClearColor(0.25f, 0.25f, 0.75f, 1.0f);
+
+    TriangleMesh triangle;
 
     std::vector<ShaderFileInfo> shader_infos 
     {
@@ -38,6 +42,8 @@ int main()
 
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(shader.get_id());
+        triangle.draw();
+
         glfwSwapBuffers(window);
     }
 

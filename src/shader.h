@@ -23,10 +23,10 @@ public:
 
 	~ShaderModule();
 
-	inline OpenGlId get_id() const { return m_id; }
+	inline OpenGlId get_id() const { return id; }
 
 private:
-	OpenGlId m_id;
+	OpenGlId id;
 };
 
 class Shader
@@ -36,8 +36,8 @@ public:
 
 	~Shader();
 
-	inline OpenGlId get_id() const { return m_id; }
+	inline OpenGlId get_id() const { return id; }
 
 private:
-	OpenGlId m_id;
+	OpenGlId id;
 };

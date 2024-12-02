@@ -59,35 +59,32 @@ ShaderModule::ShaderModule(std::string const& filepath, OpenGlId module_type)
 
 	check_shader_status_successful(shader_module, GL_COMPILE_STATUS);
 
-	m_id = shader_module;
+	id = shader_module;
 }
 
 ShaderModule::~ShaderModule()
 {
-	glDeleteShader(m_id);
+	glDeleteShader(id);
 }
 
 Shader::Shader(std::vector<ShaderFileInfo> file_infos)
 {
-	std::vector<ShaderModule> modules;
+	OpenGlId shader = glCreateProgram();
+
 	for (auto const& file_info : file_infos)
 	{
-		modules.emplace_back(file_info.filepath, file_info.shader_type);
-	}
-
-	OpenGlId shader = glCreateProgram();
-	for (auto const& module : modules)
-	{
+		ShaderModule module(file_info.filepath, file_info.shader_type);
 		glAttachShader(shader, module.get_id());
 	}
+	
 	glLinkProgram(shader);
 
 	check_shader_status_successful(shader, GL_LINK_STATUS);
 
-	m_id = shader;
+	id = shader;
 }
 
 Shader::~Shader()
 {
-	glDeleteProgram(m_id);
+	glDeleteProgram(id);
 }
