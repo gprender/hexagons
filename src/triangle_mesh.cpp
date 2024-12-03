@@ -7,37 +7,65 @@
 
 TriangleMesh::TriangleMesh()
 {
-    std::vector<float> data {
-        -1.0f,  1.0f, 0.0f, 1.0f, 0.0f, 0.0f,
-        -1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
-         1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f
+    std::vector<float> positions {
+        -1.0f, -1.0f,  0.0f,  // bottom left
+         1.0f, -1.0f,  0.0f,  // bottom right
+        -1.0f,  1.0f,  0.0f,  // top left
+         1.0f,  1.0f,  0.0f   // top right
     };
-    vertex_count = 3;
+
+    std::vector<int> colour_indices {
+        0, 1, 2, 3
+    };
+
+    std::vector<int> elements_to_draw{
+        0, 1, 2, 2, 1, 3
+    };
+    element_count = 6;
 
     glGenVertexArrays(1, &vertex_array);
     glBindVertexArray(vertex_array);
 
-    glGenBuffers(1, &vertex_buffer);
-    glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);
-    glBufferData(GL_ARRAY_BUFFER, data.size() * sizeof(float), data.data(), GL_STATIC_DRAW);
+    vertex_buffers.resize(2);
 
     // position
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+    glGenBuffers(1, &vertex_buffers[0]);
+    glBindBuffer(GL_ARRAY_BUFFER, vertex_buffers[0]);
+    glBufferData(GL_ARRAY_BUFFER, 
+        positions.size() * sizeof(float), 
+        positions.data(), 
+        GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
     // colour
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3*sizeof(float)));
+    glGenBuffers(1, &vertex_buffers[1]);
+    glBindBuffer(GL_ARRAY_BUFFER, vertex_buffers[1]);
+    glBufferData(GL_ARRAY_BUFFER, 
+        colour_indices.size() * sizeof(int), 
+        colour_indices.data(), 
+        GL_STATIC_DRAW);
+    glVertexAttribIPointer(1, 1, GL_INT, sizeof(int), (void*)0);
     glEnableVertexAttribArray(1);
+
+    // element buffer
+    glGenBuffers(1, &element_buffer);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, element_buffer);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER,
+        elements_to_draw.size() * sizeof(int),
+        elements_to_draw.data(),
+        GL_STATIC_DRAW);
 }
 
 TriangleMesh::~TriangleMesh()
 {
     glDeleteVertexArrays(1, &vertex_array);
-    glDeleteBuffers(1, &vertex_buffer);
+    glDeleteBuffers(vertex_buffers.size(), vertex_buffers.data());
+    glDeleteBuffers(1, &element_buffer);
 }
 
 void TriangleMesh::draw()
 {
     glBindVertexArray(vertex_array);
-    glDrawArrays(GL_TRIANGLES, 0, vertex_count);
+    glDrawElements(GL_TRIANGLES, element_count, GL_UNSIGNED_INT, 0);
 }

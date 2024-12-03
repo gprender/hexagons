@@ -17,7 +17,8 @@ public:
 	void draw();
 
 private:
-	OpenGlId vertex_buffer;
+	std::vector<OpenGlId> vertex_buffers;
 	OpenGlId vertex_array;
-	int vertex_count;
+	OpenGlId element_buffer;
+	int element_count;
 };
