@@ -43,10 +43,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="src\shaders\fragment.txt">
+    <Text Include="src\shaders\fragment.glsl">
       <Filter>Source Files\shaders</Filter>
     </Text>
-    <Text Include="src\shaders\vertex.txt">
+    <Text Include="src\shaders\vertex.glsl">
       <Filter>Source Files\shaders</Filter>
     </Text>
   </ItemGroup>

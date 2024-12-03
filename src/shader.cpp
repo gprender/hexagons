@@ -7,7 +7,7 @@
 
 std::string get_shader_log(OpenGlId shader)
 {
-	int log_length = -1;
+	int log_length;
 	glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &log_length);
 
 	if (log_length < 1)
@@ -26,7 +26,7 @@ std::string get_shader_log(OpenGlId shader)
 
 bool check_shader_status_successful(OpenGlId shader, OpenGlId status_type)
 {
-	int success = 0;
+	int success;
 	glGetShaderiv(shader, status_type, &success);
 
 	if (!success)

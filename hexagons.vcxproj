@@ -30,8 +30,8 @@
     <ClInclude Include="src\triangle_mesh.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="src\shaders\fragment.txt" />
-    <Text Include="src\shaders\vertex.txt" />
+    <Text Include="src\shaders\fragment.glsl" />
+    <Text Include="src\shaders\vertex.glsl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

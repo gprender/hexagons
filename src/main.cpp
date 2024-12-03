@@ -25,14 +25,14 @@ int main()
         return -1;
     }
 
-    glClearColor(0.25f, 0.25f, 0.75f, 1.0f);
+    glClearColor(0.5f, 0.5f, 0.75f, 1.0f);
 
     TriangleMesh triangle;
 
     std::vector<ShaderFileInfo> shader_infos 
     {
-        { "src/shaders/vertex.txt", GL_VERTEX_SHADER },
-        { "src/shaders/fragment.txt", GL_FRAGMENT_SHADER }
+        { "src/shaders/vertex.glsl", GL_VERTEX_SHADER },
+        { "src/shaders/fragment.glsl", GL_FRAGMENT_SHADER }
     };
     Shader shader(shader_infos);
 

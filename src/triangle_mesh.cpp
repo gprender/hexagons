@@ -8,9 +8,9 @@
 TriangleMesh::TriangleMesh()
 {
     std::vector<float> data {
-        -0.9f,  0.9f, 0.0f, 1.0f, 0.0f, 0.0f,
-        -0.9f, -0.9f, 0.0f, 0.0f, 1.0f, 0.0f,
-         0.9f, -0.9f, 0.0f, 0.0f, 0.0f, 1.0f
+        -1.0f,  1.0f, 0.0f, 1.0f, 0.0f, 0.0f,
+        -1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f,
+         1.0f, -1.0f, 0.0f, 0.0f, 0.0f, 1.0f
     };
     vertex_count = 3;
 
@@ -27,7 +27,6 @@ TriangleMesh::TriangleMesh()
 
     // colour
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3*sizeof(float)));
-
     glEnableVertexAttribArray(1);
 }
 
