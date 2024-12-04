@@ -5,6 +5,7 @@
 #include "config.h"
 #include "shader.h"
 #include "triangle_mesh.h"
+#include "material.h"
 
 
 int main()
@@ -15,7 +16,7 @@ int main()
         return -1;
     }
 
-    GLFWwindow* window = glfwCreateWindow(640, 480, "hello window", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(640, 480, "hexagons", NULL, NULL);
     glfwMakeContextCurrent(window);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
@@ -28,6 +29,7 @@ int main()
     glClearColor(0.5f, 0.5f, 0.75f, 1.0f);
 
     TriangleMesh triangle;
+    Material material("img/ainsley.jpg");
 
     std::vector<ShaderFileInfo> shader_infos 
     {
@@ -42,6 +44,7 @@ int main()
 
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(shader.get_id());
+        material.use();
         triangle.draw();
 
         glfwSwapBuffers(window);

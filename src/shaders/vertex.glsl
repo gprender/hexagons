@@ -4,6 +4,7 @@ layout (location = 0) in vec3 vertex_position;
 layout (location = 1) in int colour_index;
 
 out vec3 fragment_colour;
+out vec2 fragment_texture_coordinates;
 
 const vec3 colours[4] = vec3[]
 (
@@ -17,4 +18,5 @@ void main()
 {
 	gl_Position = vec4(vertex_position, 1.0);
 	fragment_colour = colours[colour_index];
+	fragment_texture_coordinates = vertex_position.xy;
 }
