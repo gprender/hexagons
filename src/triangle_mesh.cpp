@@ -14,10 +14,6 @@ TriangleMesh::TriangleMesh()
          1.0f,  1.0f,  0.0f   // top right
     };
 
-    std::vector<int> colour_indices {
-        0, 1, 2, 3
-    };
-
     std::vector<int> elements_to_draw{
         0, 1, 2, 2, 1, 3
     };
@@ -37,16 +33,6 @@ TriangleMesh::TriangleMesh()
         GL_STATIC_DRAW);
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
-
-    // colour
-    glGenBuffers(1, &vertex_buffers[1]);
-    glBindBuffer(GL_ARRAY_BUFFER, vertex_buffers[1]);
-    glBufferData(GL_ARRAY_BUFFER, 
-        colour_indices.size() * sizeof(int), 
-        colour_indices.data(), 
-        GL_STATIC_DRAW);
-    glVertexAttribIPointer(1, 1, GL_INT, sizeof(int), (void*)0);
-    glEnableVertexAttribArray(1);
 
     // element buffer
     glGenBuffers(1, &element_buffer);

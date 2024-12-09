@@ -6,6 +6,7 @@
 #include "shader.h"
 #include "triangle_mesh.h"
 #include "material.h"
+#include "linear_algebra.h"
 
 
 int main()
@@ -37,13 +38,22 @@ int main()
         { "src/shaders/fragment.glsl", GL_FRAGMENT_SHADER }
     };
     Shader shader(shader_infos);
+    glUseProgram(shader.get_id());
+    
+    OpenGlId model_location = glGetUniformLocation(shader.get_id(), "model");
 
     while (!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
 
+        mat4 X = create_rotation_x(80 * glfwGetTime());
+        mat4 Y = create_rotation_y(80 * glfwGetTime());
+        mat4 Z = create_rotation_z(80 * glfwGetTime());
+        mat4 model = Y;
+        glUniformMatrix4fv(model_location, 1, GL_FALSE, model.entries);
+
         glClear(GL_COLOR_BUFFER_BIT);
-        glUseProgram(shader.get_id());
+        
         material.use();
         triangle.draw();
 
