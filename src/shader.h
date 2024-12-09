@@ -12,9 +12,11 @@ struct ShaderFileInfo
 	OpenGlId shader_type;
 };
 
-std::string get_shader_log(OpenGlId shader);
+std::string get_shader_module_log(OpenGlId shader);
+bool check_shader_module_status(OpenGlId shader);
 
-bool check_shader_status_successful(OpenGlId shader, OpenGlId status_type);
+std::string get_shader_program_log(OpenGlId shader);
+bool check_shader_program_status(OpenGlId shader);
 
 class ShaderModule
 {

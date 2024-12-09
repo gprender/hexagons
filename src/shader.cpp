@@ -5,18 +5,18 @@
 #include "shader.h"
 
 
-std::string get_shader_log(OpenGlId shader)
+std::string get_shader_module_log(OpenGlId shader)
 {
-	int log_length;
+	int log_length = 0;
 	glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &log_length);
 
 	if (log_length < 1)
 	{
-		return "Failed to get shader log length";
+		return "Failed to get shader module log length";
 	}
 
 	std::vector<char> log_buffer;
-	log_buffer.reserve(log_length);
+	log_buffer.resize(log_length);
 
 	glGetShaderInfoLog(shader, log_length, NULL, log_buffer.data());
 
@@ -24,14 +24,47 @@ std::string get_shader_log(OpenGlId shader)
 	return log_string;
 }
 
-bool check_shader_status_successful(OpenGlId shader, OpenGlId status_type)
+bool check_shader_module_status(OpenGlId shader)
 {
-	int success;
-	glGetShaderiv(shader, status_type, &success);
+	int success = 0;
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
 
 	if (!success)
 	{
-		std::cout << "Shader status error: " << get_shader_log(shader) << std::endl;
+		std::cout << "Shader module status error: " << get_shader_module_log(shader) << std::endl;
+		return false;
+	}
+
+	return true;
+}
+
+std::string get_shader_program_log(OpenGlId shader)
+{
+	int log_length = 0;
+	glGetProgramiv(shader, GL_INFO_LOG_LENGTH, &log_length);
+
+	if (log_length < 1)
+	{
+		return "Failed to get shader program log length";
+	}
+
+	std::vector<char> log_buffer;
+	log_buffer.resize(log_length);
+
+	glGetShaderInfoLog(shader, log_length, NULL, log_buffer.data());
+
+	std::string log_string(log_buffer.begin(), log_buffer.end());
+	return log_string;
+}
+
+bool check_shader_program_status(OpenGlId shader)
+{
+	int success = 0;
+	glGetProgramiv(shader, GL_LINK_STATUS, &success);
+
+	if (!success)
+	{
+		std::cout << "Shader program status error: " << get_shader_program_log(shader) << std::endl;
 		return false;
 	}
 
@@ -57,7 +90,7 @@ ShaderModule::ShaderModule(std::string const& filepath, OpenGlId module_type)
 	glShaderSource(shader_module, 1, &shader_source_cstr, NULL);
 	glCompileShader(shader_module);
 
-	check_shader_status_successful(shader_module, GL_COMPILE_STATUS);
+	check_shader_module_status(shader_module);
 
 	id = shader_module;
 }
@@ -79,7 +112,7 @@ Shader::Shader(std::vector<ShaderFileInfo> file_infos)
 	
 	glLinkProgram(shader);
 
-	check_shader_status_successful(shader, GL_LINK_STATUS);
+	check_shader_program_status(shader);
 
 	id = shader;
 }
