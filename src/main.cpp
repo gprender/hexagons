@@ -41,6 +41,14 @@ int main()
     glUseProgram(shader.get_id());
     
     OpenGlId model_location = glGetUniformLocation(shader.get_id(), "model");
+    OpenGlId view_location = glGetUniformLocation(shader.get_id(), "view");
+
+    vec3 const camera_position { -0.4f, 0.0f, 0.2f };
+    vec3 const camera_target { 0.0f, 0.0f, 0.0f };
+
+    mat4 view = create_look_at(camera_position, camera_target);
+    // mat4 view = create_identity4();
+    glUniformMatrix4fv(view_location, 1, GL_FALSE, view.entries);
 
     while (!glfwWindowShouldClose(window))
     {
@@ -49,7 +57,8 @@ int main()
         mat4 X = create_rotation_x(80 * glfwGetTime());
         mat4 Y = create_rotation_y(80 * glfwGetTime());
         mat4 Z = create_rotation_z(80 * glfwGetTime());
-        mat4 model = Y;
+
+        mat4 model = Z;
         glUniformMatrix4fv(model_location, 1, GL_FALSE, model.entries);
 
         glClear(GL_COLOR_BUFFER_BIT);
