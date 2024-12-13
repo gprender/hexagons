@@ -42,13 +42,16 @@ int main()
     
     OpenGlId model_location = glGetUniformLocation(shader.get_id(), "model");
     OpenGlId view_location = glGetUniformLocation(shader.get_id(), "view");
+    OpenGlId projection_location = glGetUniformLocation(shader.get_id(), "projection");
 
-    vec3 const camera_position { -0.4f, 0.0f, 0.2f };
+    vec3 const camera_position { -1.5f, 0.0f, -1.5f };
     vec3 const camera_target { 0.0f, 0.0f, 0.0f };
 
     mat4 view = create_look_at(camera_position, camera_target);
-    // mat4 view = create_identity4();
     glUniformMatrix4fv(view_location, 1, GL_FALSE, view.entries);
+
+    mat4 projection = create_projection(45.0f, 640.0f / 480.0f, 0.1f, 10.0f);
+    glUniformMatrix4fv(projection_location, 1, GL_FALSE, projection.entries);
 
     while (!glfwWindowShouldClose(window))
     {

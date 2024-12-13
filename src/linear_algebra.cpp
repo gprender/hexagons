@@ -163,25 +163,21 @@ mat4 create_look_at(vec3 from, vec3 to)
 	return m;
 }
 
-// Pretty sure something is broken in this one
-mat4 prod(mat4 const A, mat4 const B)
+mat4 create_projection(
+	float const fovy, float const aspectratio, float const near, float const far) 
 {
-	mat4 C;
+	float const fovy_rad = fovy * PI / 360.0f;
+	float const t = tanf(fovy);
+	float const n = -near;
+	float const f = -far;
 
-	for (int i = 0; i < 4; i++) // column
-	{
-		for (int j = 0; j < 4; j++)  // row
-		{
-			float c_ij = 0;
+	mat4 m;
 
-			for (int k = 0; k < 4; k++)
-			{
-				c_ij += A.entries[i+k] * B.entries[j+(k*4)];
-			}
+	m.entries[0] = 1.0f / (aspectratio * t);
+	m.entries[5] = 1.0f / t;
+	m.entries[10] = -(n+f) / (n-f);
+	m.entries[11] = -1.0f;
+	m.entries[14] = 2 * n * f / (n-f);
 
-			C.entries[(i*4)+j] = c_ij;
-		}
-	}
-
-	return C;
+	return m;
 }

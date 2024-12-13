@@ -42,4 +42,5 @@ mat4 create_rotation_z(float const angle);
 
 mat4 create_look_at(vec3 from, vec3 to);
 
-mat4 prod(mat4 const A, mat4 const B);
+mat4 create_projection(
+	float const fovy, float const aspectratio, float const near, float const far);
