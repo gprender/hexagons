@@ -30,16 +30,28 @@
     <ClCompile Include="src\triangle_mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\config.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\config.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="dependencies\stb\stb_image.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\shader.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="src\material.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\triangle_mesh.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\config.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="src\config.cpp" />
     <ClCompile Include="src\glad.c" />
-    <ClCompile Include="src\linear_algebra.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\material.cpp" />
     <ClCompile Include="src\shader.cpp" />
@@ -30,7 +29,6 @@
   <ItemGroup>
     <ClInclude Include="dependencies\stb\stb_image.h" />
     <ClInclude Include="src\config.h" />
-    <ClInclude Include="src\linear_algebra.h" />
     <ClInclude Include="src\material.h" />
     <ClInclude Include="src\shader.h" />
     <ClInclude Include="src\triangle_mesh.h" />
