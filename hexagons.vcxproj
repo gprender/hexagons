@@ -19,7 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\config.cpp" />
+    <ClCompile Include="src\cube.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\material.cpp" />
@@ -28,7 +30,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dependencies\stb\stb_image.h" />
+    <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\config.h" />
+    <ClInclude Include="src\cube.h" />
     <ClInclude Include="src\material.h" />
     <ClInclude Include="src\shader.h" />
     <ClInclude Include="src\triangle_mesh.h" />
