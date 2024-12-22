@@ -1,9 +1,11 @@
-#include "material.h"
+#include "texture.h"
 #include "stb/stb_image.h"
 
-Material::Material(std::string filename)
+
+Texture::Texture(std::string const& filename)
 {
 	int width, height, channels;
+	stbi_set_flip_vertically_on_load(true);
 	unsigned char* data = stbi_load(filename.c_str(), &width, &height, &channels, STBI_rgb_alpha);
 
 	// make texture
@@ -22,12 +24,12 @@ Material::Material(std::string filename)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
-Material::~Material()
+Texture::~Texture()
 {
 	glDeleteTextures(1, &texture);
 }
 
-void Material::use()
+void Texture::use()
 {
 	glBindTexture(GL_TEXTURE_2D, texture);
 }

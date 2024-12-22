@@ -1,15 +1,16 @@
-#include "config.h"
+#include "../config.h"
+
 
 class Camera 
 {
 public:
-    Camera(glm::vec3 const position);
+    explicit Camera(glm::vec3 const position);
+
+    void move(glm::vec3 const dPos);
+    void spin(glm::vec3 const dEulers);
 
     glm::mat4 get_view_transform();
 
-    void move(glm::vec3 const dPos);
-
-    void spin(glm::vec3 const dEulers);
 private:
     glm::vec3 position;
     glm::vec3 eulers { 0.0f, 0.0f, 0.0f };

@@ -16,6 +16,15 @@
     <Filter Include="Source Files\shaders">
       <UniqueIdentifier>{6dab562e-e439-4eaf-a645-9cec66a4fbaa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\model">
+      <UniqueIdentifier>{0ec9739a-11a2-4026-ba5e-a5900cd59915}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\view">
+      <UniqueIdentifier>{b1bd1a0b-2b5a-412c-af3b-b39140183e0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\controller">
+      <UniqueIdentifier>{4df4a08a-219d-4dbf-8fc7-171b17dc0077}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -24,46 +33,64 @@
     <ClCompile Include="src\glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\shader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\triangle_mesh.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\config.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\material.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\model\camera.cpp">
+      <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="src\cube.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\model\cube.cpp">
+      <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="src\camera.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\controller\app.cpp">
+      <Filter>Source Files\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\shader.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\scene.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\cube_mesh.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\texture.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\renderer.cpp">
+      <Filter>Source Files\view</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dependencies\stb\stb_image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\material.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\model\camera.h">
+      <Filter>Source Files\model</Filter>
     </ClInclude>
-    <ClInclude Include="src\triangle_mesh.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\model\cube.h">
+      <Filter>Source Files\model</Filter>
     </ClInclude>
-    <ClInclude Include="src\shader.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\controller\app.h">
+      <Filter>Source Files\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\shader.h">
+      <Filter>Source Files\view</Filter>
     </ClInclude>
     <ClInclude Include="src\config.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\cube.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\model\scene.h">
+      <Filter>Source Files\model</Filter>
     </ClInclude>
-    <ClInclude Include="src\camera.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\view\cube_mesh.h">
+      <Filter>Source Files\view</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\texture.h">
+      <Filter>Source Files\view</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\renderer.h">
+      <Filter>Source Files\view</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

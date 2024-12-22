@@ -19,23 +19,29 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\camera.cpp" />
     <ClCompile Include="src\config.cpp" />
-    <ClCompile Include="src\cube.cpp" />
+    <ClCompile Include="src\controller\app.cpp" />
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\material.cpp" />
-    <ClCompile Include="src\shader.cpp" />
-    <ClCompile Include="src\triangle_mesh.cpp" />
+    <ClCompile Include="src\model\camera.cpp" />
+    <ClCompile Include="src\model\cube.cpp" />
+    <ClCompile Include="src\model\scene.cpp" />
+    <ClCompile Include="src\view\cube_mesh.cpp" />
+    <ClCompile Include="src\view\renderer.cpp" />
+    <ClCompile Include="src\view\shader.cpp" />
+    <ClCompile Include="src\view\texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dependencies\stb\stb_image.h" />
-    <ClInclude Include="src\camera.h" />
     <ClInclude Include="src\config.h" />
-    <ClInclude Include="src\cube.h" />
-    <ClInclude Include="src\material.h" />
-    <ClInclude Include="src\shader.h" />
-    <ClInclude Include="src\triangle_mesh.h" />
+    <ClInclude Include="src\controller\app.h" />
+    <ClInclude Include="src\model\camera.h" />
+    <ClInclude Include="src\model\cube.h" />
+    <ClInclude Include="src\model\scene.h" />
+    <ClInclude Include="src\view\cube_mesh.h" />
+    <ClInclude Include="src\view\renderer.h" />
+    <ClInclude Include="src\view\shader.h" />
+    <ClInclude Include="src\view\texture.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\shaders\fragment.glsl" />

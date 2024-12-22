@@ -1,9 +1,9 @@
 #include "camera.h"
 
-Camera::Camera(glm::vec3 const position)
-{
-	this->position = position;
-}
+
+Camera::Camera(glm::vec3 const position):
+	position(position)
+{ }
 
 glm::mat4 Camera::get_view_transform()
 {
