@@ -25,5 +25,4 @@ private:
     Scene scene;
     GLFWwindow* window;
     std::shared_ptr<Renderer> renderer;
-    
 };
