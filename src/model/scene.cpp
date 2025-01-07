@@ -1,4 +1,9 @@
+/**
+ * @author Graeme Prendergast
+ */
+
 #include "scene.h"
+
 
 Scene::Scene():
     camera({ 0.0f, 0.0f, 1.0f })

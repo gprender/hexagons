@@ -66,7 +66,7 @@ void Renderer::make_assets()
 {
 	cube_mesh = std::make_shared<CubeMesh>(glm::vec3{ 0.25f, 0.25f, 0.25f });
 
-	cube_texture = std::make_shared<Texture>("img/ainsley.jpg");
+	cube_texture = std::make_shared<Texture>("assets/textures/ainsley.jpg");
 
 	shader = std::make_shared<Shader>(
 		std::vector<ShaderFileInfo>	{

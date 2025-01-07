@@ -23,7 +23,7 @@ void App::run()
         if (handle_input()) 
             break;
 
-        scene.update(16.67f / 1000.0f);
+        scene.update(15.0f / 1000.0f);
         renderer->render(scene);
     }
 }

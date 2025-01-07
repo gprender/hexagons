@@ -21,7 +21,6 @@ private:
     bool handle_input();
     void set_up_glfw();
 
-    
     Scene scene;
     GLFWwindow* window;
     std::shared_ptr<Renderer> renderer;
