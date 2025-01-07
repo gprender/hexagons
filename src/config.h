@@ -1,8 +1,8 @@
-#pragma once
-
 /**
  * @author Graeme Prendergast
  */
+
+#pragma once
 
 #include <iostream>
 #include <fstream>
@@ -17,3 +17,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 using OpenGlId = uint32_t;
+
+std::vector<std::string> split(std::string const& str, std::string const& delimiter);
+
+std::string to_string(std::vector<std::string> const& vec);
