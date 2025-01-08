@@ -20,7 +20,7 @@ std::vector<std::string> split(std::string const& str, std::string const& delimi
 	size_t token_begin = 0, token_end = 0;
 	while ((token_end = str.find(delimiter, token_begin)) != std::string::npos)
 	{
-		if (token_end - token_begin < 2)  // multiple adjacent delimiters encountered
+		if (token_end - token_begin == 0) // next delimiter is adjacent to previous
 		{
 			token_begin = token_end + 1;
 			continue;
@@ -31,8 +31,11 @@ std::vector<std::string> split(std::string const& str, std::string const& delimi
 		token_begin = token_end + 1;
 	}
 
-	std::string const last_token = str.substr(token_begin, token_end - token_begin);
-	tokens.push_back(last_token);
+	if (!(token_begin == str.length()))
+	{
+		std::string const last_token = str.substr(token_begin);
+		tokens.push_back(last_token);
+	}
 
 	return tokens;
 }
