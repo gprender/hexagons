@@ -26,6 +26,8 @@
     <ClCompile Include="src\model\camera.cpp" />
     <ClCompile Include="src\model\cube.cpp" />
     <ClCompile Include="src\model\scene.cpp" />
+    <ClCompile Include="src\utilities\ObjReader.cpp" />
+    <ClCompile Include="src\utilities\StringOps.cpp" />
     <ClCompile Include="src\view\cube_mesh.cpp" />
     <ClCompile Include="src\view\renderer.cpp" />
     <ClCompile Include="src\view\shader.cpp" />
@@ -38,6 +40,8 @@
     <ClInclude Include="src\model\camera.h" />
     <ClInclude Include="src\model\cube.h" />
     <ClInclude Include="src\model\scene.h" />
+    <ClInclude Include="src\utilities\ObjReader.h" />
+    <ClInclude Include="src\utilities\StringOps.h" />
     <ClInclude Include="src\view\cube_mesh.h" />
     <ClInclude Include="src\view\renderer.h" />
     <ClInclude Include="src\view\shader.h" />
