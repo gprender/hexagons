@@ -5,7 +5,7 @@ class Cube
 {
 public:
     Cube(glm::vec3 const position);
-    void update(float const delta_rotation);
+    void update(glm::vec3 const rotation_delta);
     glm::mat4 get_model_transform(); 
 
 private:

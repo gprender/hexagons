@@ -10,9 +10,9 @@ class Scene
 public:
     Scene();
 
-    void update(float const delta_rotation);
-    void move_camera(glm::vec3 const& delta_position);
-    void spin_camera(glm::vec3 const& delta_rotation);
+    void update(glm::vec3 const rotation_delta);
+    void move_camera(glm::vec3 const& position_delta);
+    void spin_camera(glm::vec3 const& rotation_delta);
 
     std::vector<Cube> cubes;
     Camera camera;

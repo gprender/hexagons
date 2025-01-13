@@ -11,20 +11,20 @@ Scene::Scene():
     cubes.emplace_back(glm::vec3{ 3.0f, 0.0f, 0.25f });
 }
 
-void Scene::update(float const delta_rotation) 
+void Scene::update(glm::vec3 const rotation_delta) 
 {
     for (auto& cube : cubes)
     {
-        cube.update(delta_rotation);
+        cube.update(rotation_delta);
     }
 }
 
-void Scene::move_camera(glm::vec3 const& delta_position)
+void Scene::move_camera(glm::vec3 const& position_delta)
 {
-    camera.move(delta_position);
+    camera.move(position_delta);
 }
 
-void Scene::spin_camera(glm::vec3 const& delta_rotation)
+void Scene::spin_camera(glm::vec3 const& rotation_delta)
 {
-    camera.spin(delta_rotation);
+    camera.spin(rotation_delta);
 }
