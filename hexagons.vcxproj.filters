@@ -25,6 +25,9 @@
     <Filter Include="Source Files\controller">
       <UniqueIdentifier>{4df4a08a-219d-4dbf-8fc7-171b17dc0077}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\utilities">
+      <UniqueIdentifier>{39598386-2246-459b-bc70-9b34effa65f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -60,6 +63,18 @@
     <ClCompile Include="src\view\renderer.cpp">
       <Filter>Source Files\view</Filter>
     </ClCompile>
+    <ClCompile Include="src\utilities\StringOps.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utilities\ObjReader.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="src\model\Object3d.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="src\view\PolygonMesh.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dependencies\stb\stb_image.h">
@@ -91,6 +106,18 @@
     </ClInclude>
     <ClInclude Include="src\view\renderer.h">
       <Filter>Source Files\view</Filter>
+    </ClInclude>
+    <ClInclude Include="src\model\Object3d.h">
+      <Filter>Source Files\model</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\ObjReader.h">
+      <Filter>Source Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\view\PolygonMesh.h">
+      <Filter>Source Files\view</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\StringOps.h">
+      <Filter>Source Files\utilities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
