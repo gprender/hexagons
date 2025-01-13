@@ -7,15 +7,18 @@
 
 namespace ObjReader
 {
-    void read_obj_mesh(std::string const& filename, std::vector<float>& vertices)
-    {
+    void read_obj_mesh(
+        std::string const& filename, 
+        std::vector<float>& vertices,
+        glm::mat4 const pretransform
+    ) {
         std::vector<glm::vec3> v;
         std::vector<glm::vec2> vt;
         std::vector<glm::vec3> vn;
 
         reserve_obj_mesh_vectors(filename, v, vt, vn, vertices);
 
-        fill_obj_mesh_vectors(filename, v, vt, vn);
+        fill_obj_mesh_vectors(filename, v, vt, vn, pretransform);
 
         fill_vertex_vector(filename, v, vt, vn, vertices);
     }
@@ -69,7 +72,8 @@ namespace ObjReader
         std::string const& filename,
         std::vector<glm::vec3>& v,  /* out */
         std::vector<glm::vec2>& vt, /* out */
-        std::vector<glm::vec3>& vn  /* out */
+        std::vector<glm::vec3>& vn, /* out */
+        glm::mat4 const pretransform
     ) {
         std::ifstream file;
         std::string line;
@@ -81,7 +85,8 @@ namespace ObjReader
 
             if (tokens[0].compare("v") == 0)
             {
-                v.push_back(to_vec3(tokens.begin() + 1));
+                auto vertex = to_vec3(tokens.begin() + 1);
+                v.push_back(pretransform * glm::vec4(vertex, 1.0));
             }
             else if (tokens[0].compare("vt") == 0)
             {
@@ -89,7 +94,8 @@ namespace ObjReader
             }
             else if (tokens[0].compare("vn") == 0)
             {
-                vn.push_back(to_vec3(tokens.begin() + 1));
+                auto normal = to_vec3(tokens.begin() + 1);
+                vn.push_back(pretransform * glm::vec4(normal, 0.0));
             }
         }
         file.close();

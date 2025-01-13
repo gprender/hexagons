@@ -8,7 +8,11 @@
 
 namespace ObjReader
 {
-    void read_obj_mesh(std::string const& filename, std::vector<float>& vertices);
+    void read_obj_mesh(
+        std::string const& filename, 
+        std::vector<float>& vertices,
+        glm::mat4 const pretransform
+    );
 
     void reserve_obj_mesh_vectors(
         std::string const& filename,
@@ -22,7 +26,8 @@ namespace ObjReader
         std::string const& filename,
         std::vector<glm::vec3>& v,  /* out */
         std::vector<glm::vec2>& vt, /* out */
-        std::vector<glm::vec3>& vn  /* out */
+        std::vector<glm::vec3>& vn, /* out */
+        glm::mat4 const pretransform
     );
 
     void fill_vertex_vector(std::string const& filename,

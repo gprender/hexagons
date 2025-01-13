@@ -69,7 +69,13 @@ void Renderer::set_up_opengl(GLFWwindow* window)
 
 void Renderer::make_assets()
 {
-	default_mesh = std::make_shared<PolygonMesh>("assets/meshes/hexagonal_tile_tr.obj");
+	glm::mat4 pretransform(1.0f);
+
+	// rotations to convert from blender's coordinate space to OpenGL's
+	pretransform = glm::rotate(pretransform, glm::radians(90.0f), glm::vec3{ 1.0f, 0.0f, 0.0f });
+	pretransform = glm::rotate(pretransform, glm::radians(-90.0f), glm::vec3{ 0.0f, 1.0f, 0.0f });
+
+	default_mesh = std::make_shared<PolygonMesh>("assets/meshes/hexagonal_tile_tr.obj", pretransform);
 
 	default_texture = std::make_shared<Texture>("assets/textures/ainsley.jpg");
 

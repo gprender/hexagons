@@ -7,9 +7,9 @@
 #include "../utilities/ObjReader.h"
 
 
-PolygonMesh::PolygonMesh(std::string const& obj_filename)
+PolygonMesh::PolygonMesh(std::string const& obj_filename, glm::mat4 const pretransform)
 {
-	make_mesh(obj_filename);
+	make_mesh(obj_filename, pretransform);
 }
 
 PolygonMesh::PolygonMesh(std::vector<float>& vertices)
@@ -29,10 +29,10 @@ void PolygonMesh::draw()
 	glDrawArrays(GL_TRIANGLES, 0, vertex_count);
 }
 
-void PolygonMesh::make_mesh(std::string const& obj_filename)
+void PolygonMesh::make_mesh(std::string const& obj_filename, glm::mat4 const pretransform)
 {
 	std::vector<float> vertices;
-	ObjReader::read_obj_mesh(obj_filename, vertices);
+	ObjReader::read_obj_mesh(obj_filename, vertices, pretransform);
 	make_mesh(vertices);
 }
 
