@@ -8,14 +8,14 @@
 Scene::Scene():
     camera({ 0.0f, 0.0f, 1.0f })
 {
-    cubes.emplace_back(glm::vec3{ 3.0f, 0.0f, 0.25f });
+    objects.emplace_back(glm::vec3{ 3.0f, 0.0f, 0.25f });
 }
 
 void Scene::update(glm::vec3 const rotation_delta) 
 {
-    for (auto& cube : cubes)
+    for (auto& object : objects)
     {
-        cube.update(rotation_delta);
+        object.update(rotation_delta);
     }
 }
 

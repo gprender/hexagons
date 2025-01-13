@@ -1,4 +1,9 @@
+/**
+* @author Graeme Prendergast 
+*/
+
 #include "renderer.h"
+
 #include <vector>
 
 
@@ -24,14 +29,14 @@ void Renderer::render(Scene& scene)
 		glm::value_ptr(scene.camera.get_view_transform())
 	);
 
-	cube_texture->use();
-	for (auto& cube : scene.cubes)
+	default_texture->use();
+	for (auto& object : scene.objects)
 	{
 		glUniformMatrix4fv(
 			model_location, 1, GL_FALSE,
-			glm::value_ptr(cube.get_model_transform())
+			glm::value_ptr(object.get_model_transform())
 		);
-		cube_mesh->draw();
+		default_mesh->draw();
 	}
 
 	glfwSwapBuffers(window);
@@ -64,9 +69,9 @@ void Renderer::set_up_opengl(GLFWwindow* window)
 
 void Renderer::make_assets()
 {
-	cube_mesh = std::make_shared<CubeMesh>(glm::vec3{ 0.25f, 0.25f, 0.25f });
+	default_mesh = std::make_shared<PolygonMesh>("assets/meshes/hexagonal_tile_tr.obj");
 
-	cube_texture = std::make_shared<Texture>("assets/textures/ainsley.jpg");
+	default_texture = std::make_shared<Texture>("assets/textures/ainsley.jpg");
 
 	shader = std::make_shared<Shader>(
 		std::vector<ShaderFileInfo>	{

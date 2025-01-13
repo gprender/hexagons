@@ -17,11 +17,12 @@ void Object3d::update(glm::vec3 const rotation_delta)
 glm::mat4 Object3d::get_model_transform()
 {
 	glm::mat4 model(1.0f);
+
 	model = glm::translate(model, position);
 
 	model = glm::rotate(model, glm::radians(rotation.x), { 1.0f, 0.0f, 0.0f });
 	model = glm::rotate(model, glm::radians(rotation.y), { 0.0f, 1.0f, 0.0f });
 	model = glm::rotate(model, glm::radians(rotation.z), { 0.0f, 0.0f, 1.0f });
 
-	return glm::mat4();
+	return model;
 }

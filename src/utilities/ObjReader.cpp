@@ -150,19 +150,17 @@ namespace ObjReader
 
     glm::vec2 to_vec2(std::vector<std::string>::iterator it)
     {
-        return glm::vec2(
-            std::stof(*it++), 
-            std::stof(*it)
-        );
+        auto x = std::stof(*it++);
+        auto y = std::stof(*it++);
+        return glm::vec2(x, y);
     }
 
 
     glm::vec3 to_vec3(std::vector<std::string>::iterator it)
     {
-        return glm::vec3(
-            std::stof(*it++), 
-            std::stof(*it++), 
-            std::stof(*it)
-        );
+        auto x = std::stof(*it++);
+        auto y = std::stof(*it++);
+        auto z = std::stof(*it);
+        return glm::vec3(x, y, z);
     }
 }

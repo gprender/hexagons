@@ -1,16 +1,16 @@
-#pragma once
-
 /**
  * @author Graeme Prendergast
  */
 
-#include <memory>
+#pragma once
 
 #include "../config.h"
 #include "shader.h"
-#include "cube_mesh.h"
 #include "texture.h"
 #include "../model/scene.h"
+#include "PolygonMesh.h"
+
+#include <memory>
 
 
 class Renderer 
@@ -25,8 +25,9 @@ private:
     void set_up_opengl(GLFWwindow* window);
     void make_assets();
 
-    std::shared_ptr<CubeMesh> cube_mesh;
-    std::shared_ptr<Texture> cube_texture;
+    std::shared_ptr<PolygonMesh> default_mesh;
+    std::shared_ptr<Texture> default_texture;
+
     GLFWwindow* window;
     std::shared_ptr<Shader> shader;
 
