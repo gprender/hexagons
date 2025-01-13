@@ -1,3 +1,7 @@
+/**
+* @author Graeme Prendergast 
+*/
+
 #include "cube_mesh.h"
 
 
@@ -21,47 +25,47 @@ void CubeMesh::draw()
 void CubeMesh::make_mesh(float const length, float const width, float const height)
 {
     std::vector<float> vertices {
-        length,  width, -height, 1.0f, 1.0f,
-        length, -width, -height, 1.0f, 0.0f,
-        -length, -width, -height, 0.0f, 0.0f,
-        -length, -width, -height, 0.0f, 0.0f,
-        -length,  width, -height, 0.0f, 1.0f,
-        length,  width, -height, 1.0f, 1.0f,
+         length,  width, -height, 1.0f, 1.0f,  0.0f,  0.0f, -1.0f,
+         length, -width, -height, 1.0f, 0.0f,  0.0f,  0.0f, -1.0f,
+        -length, -width, -height, 0.0f, 0.0f,  0.0f,  0.0f, -1.0f,
+        -length, -width, -height, 0.0f, 0.0f,  0.0f,  0.0f, -1.0f,
+        -length,  width, -height, 0.0f, 1.0f,  0.0f,  0.0f, -1.0f,
+         length,  width, -height, 1.0f, 1.0f,  0.0f,  0.0f, -1.0f,
 
-        -length, -width,  height, 0.0f, 0.0f,
-        length, -width,  height, 1.0f, 0.0f,
-        length,  width,  height, 1.0f, 1.0f,
-        length,  width,  height, 1.0f, 1.0f,
-        -length,  width,  height, 0.0f, 1.0f,
-        -length, -width,  height, 0.0f, 0.0f,
+        -length, -width,  height, 0.0f, 0.0f,  0.0f,  0.0f,  1.0f,
+         length, -width,  height, 1.0f, 0.0f,  0.0f,  0.0f,  1.0f,
+         length,  width,  height, 1.0f, 1.0f,  0.0f,  0.0f,  1.0f,
+         length,  width,  height, 1.0f, 1.0f,  0.0f,  0.0f,  1.0f,
+        -length,  width,  height, 0.0f, 1.0f,  0.0f,  0.0f,  1.0f,
+        -length, -width,  height, 0.0f, 0.0f,  0.0f,  0.0f,  1.0f,
 
-        -length,  width,  height, 1.0f, 1.0f,
-        -length,  width, -height, 1.0f, 0.0f,
-        -length, -width, -height, 0.0f, 0.0f,
-        -length, -width, -height, 0.0f, 0.0f,
-        -length, -width,  height, 0.0f, 1.0f,
-        -length,  width,  height, 1.0f, 1.0f,
+        -length,  width,  height, 1.0f, 1.0f, -1.0f,  0.0f,  0.0f,
+        -length,  width, -height, 1.0f, 0.0f, -1.0f,  0.0f,  0.0f,
+        -length, -width, -height, 0.0f, 0.0f, -1.0f,  0.0f,  0.0f,
+        -length, -width, -height, 0.0f, 0.0f, -1.0f,  0.0f,  0.0f,
+        -length, -width,  height, 0.0f, 1.0f, -1.0f,  0.0f,  0.0f,
+        -length,  width,  height, 1.0f, 1.0f, -1.0f,  0.0f,  0.0f,
 
-        length, -width, -height, 0.0f, 0.0f,
-        length,  width, -height, 1.0f, 0.0f,
-        length,  width,  height, 1.0f, 1.0f,
-        length,  width,  height, 1.0f, 1.0f,
-        length, -width,  height, 0.0f, 1.0f,
-        length, -width, -height, 0.0f, 0.0f,
+         length, -width, -height, 0.0f, 0.0f,  1.0f,  0.0f,  0.0f,
+         length,  width, -height, 1.0f, 0.0f,  1.0f,  0.0f,  0.0f,
+         length,  width,  height, 1.0f, 1.0f,  1.0f,  0.0f,  0.0f,
+         length,  width,  height, 1.0f, 1.0f,  1.0f,  0.0f,  0.0f,
+         length, -width,  height, 0.0f, 1.0f,  1.0f,  0.0f,  0.0f,
+         length, -width, -height, 0.0f, 0.0f,  1.0f,  0.0f,  0.0f,
 
-        -length, -width, -height, 0.0f, 0.0f,
-        length, -width, -height, 1.0f, 0.0f,
-        length, -width,  height, 1.0f, 1.0f,
-        length, -width,  height, 1.0f, 1.0f,
-        -length, -width,  height, 0.0f, 1.0f,
-        -length, -width, -height, 0.0f, 0.0f,
+        -length, -width, -height, 0.0f, 0.0f,  0.0f, -1.0f,  0.0f,
+         length, -width, -height, 1.0f, 0.0f,  0.0f, -1.0f,  0.0f,
+         length, -width,  height, 1.0f, 1.0f,  0.0f, -1.0f,  0.0f,
+         length, -width,  height, 1.0f, 1.0f,  0.0f, -1.0f,  0.0f,
+        -length, -width,  height, 0.0f, 1.0f,  0.0f, -1.0f,  0.0f,
+        -length, -width, -height, 0.0f, 0.0f,  0.0f, -1.0f,  0.0f,
 
-        length,  width,  height, 1.0f, 1.0f,
-        length,  width, -height, 1.0f, 0.0f,
-        -length,  width, -height, 0.0f, 0.0f,
-        -length,  width, -height, 0.0f, 0.0f,
-        -length,  width,  height, 0.0f, 1.0f,
-        length,  width,  height, 1.0f, 1.0f
+         length,  width,  height, 1.0f, 1.0f,  0.0f,  1.0f,  0.0f,
+         length,  width, -height, 1.0f, 0.0f,  0.0f,  1.0f,  0.0f,
+        -length,  width, -height, 0.0f, 0.0f,  0.0f,  1.0f,  0.0f,
+        -length,  width, -height, 0.0f, 0.0f,  0.0f,  1.0f,  0.0f,
+        -length,  width,  height, 0.0f, 1.0f,  0.0f,  1.0f,  0.0f,
+         length,  width,  height, 1.0f, 1.0f,  0.0f,  1.0f,  0.0f
     };
 
     glGenVertexArrays(1, &vertex_array);
@@ -72,10 +76,14 @@ void CubeMesh::make_mesh(float const length, float const width, float const heig
     glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
 
     // position
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
     // texture coordinates
-    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)12);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
     glEnableVertexAttribArray(1);
+
+    // normals
+    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)((3 + 2) * sizeof(float)));
+    glEnableVertexAttribArray(2);
 }
