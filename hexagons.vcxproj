@@ -24,7 +24,6 @@
     <ClCompile Include="src\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\model\camera.cpp" />
-    <ClCompile Include="src\model\cube.cpp" />
     <ClCompile Include="src\model\Object3d.cpp" />
     <ClCompile Include="src\model\scene.cpp" />
     <ClCompile Include="src\utilities\ObjReader.cpp" />
@@ -40,7 +39,6 @@
     <ClInclude Include="src\config.h" />
     <ClInclude Include="src\controller\app.h" />
     <ClInclude Include="src\model\camera.h" />
-    <ClInclude Include="src\model\cube.h" />
     <ClInclude Include="src\model\Object3d.h" />
     <ClInclude Include="src\model\scene.h" />
     <ClInclude Include="src\utilities\ObjReader.h" />

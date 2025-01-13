@@ -42,9 +42,6 @@
     <ClCompile Include="src\model\camera.cpp">
       <Filter>Source Files\model</Filter>
     </ClCompile>
-    <ClCompile Include="src\model\cube.cpp">
-      <Filter>Source Files\model</Filter>
-    </ClCompile>
     <ClCompile Include="src\controller\app.cpp">
       <Filter>Source Files\controller</Filter>
     </ClCompile>
@@ -81,9 +78,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\model\camera.h">
-      <Filter>Source Files\model</Filter>
-    </ClInclude>
-    <ClInclude Include="src\model\cube.h">
       <Filter>Source Files\model</Filter>
     </ClInclude>
     <ClInclude Include="src\controller\app.h">
