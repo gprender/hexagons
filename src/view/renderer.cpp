@@ -73,7 +73,6 @@ void Renderer::make_assets()
 
 	// rotations to convert from blender's coordinate space to OpenGL's
 	pretransform = glm::rotate(pretransform, glm::radians(90.0f), glm::vec3{ 1.0f, 0.0f, 0.0f });
-	pretransform = glm::rotate(pretransform, glm::radians(-90.0f), glm::vec3{ 0.0f, 1.0f, 0.0f });
 
 	default_mesh = std::make_shared<PolygonMesh>("assets/meshes/hexagonal_tile_tr.obj", pretransform);
 

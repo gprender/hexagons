@@ -1,14 +1,15 @@
 #include "camera.h"
 
 
-Camera::Camera(glm::vec3 const position):
-	position(position)
+Camera::Camera(glm::vec3 const position, glm::vec3 const rotation):
+	position(position),
+	rotation(rotation)
 { }
 
 glm::mat4 Camera::get_view_transform()
 {
-	float theta = glm::radians(eulers.z);
-	float phi = glm::radians(eulers.y);
+	float theta = glm::radians(rotation.z);
+	float phi = glm::radians(rotation.y);
 
 	forwards = {
 		glm::cos(theta) * glm::cos(phi),
@@ -30,13 +31,13 @@ void Camera::move(glm::vec3 const dPos)
 
 void Camera::spin(glm::vec3 const dEulers)
 {
-	eulers.y = fminf(89.0f, fmaxf(-89.0f, eulers.y + dEulers.y));
+	rotation.y = fminf(89.0f, fmaxf(-89.0f, rotation.y + dEulers.y));
 
-	eulers.z += dEulers.z;
-	if (eulers.z > 360) {
-		eulers.z -= 360;
+	rotation.z += dEulers.z;
+	if (rotation.z > 360) {
+		rotation.z -= 360;
 	}
-	else if (eulers.z < 0) {
-		eulers.z += 360;
+	else if (rotation.z < 0) {
+		rotation.z += 360;
 	}
 }

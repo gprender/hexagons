@@ -6,9 +6,12 @@
 
 
 Scene::Scene():
-    camera({ 0.0f, 0.0f, 1.0f })
+    camera(
+        {  0.0f, 0.0f, 5.0f }, // position
+        {  0.0f, -90.0f, 90.0f } // rotation
+    )
 {
-    objects.emplace_back(glm::vec3{ 3.0f, 0.0f, 0.25f });
+    objects.emplace_back(glm::vec3{ 0.0f, 0.0f, 0.0f });
 }
 
 void Scene::update(glm::vec3 const rotation_delta) 

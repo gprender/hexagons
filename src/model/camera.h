@@ -4,7 +4,7 @@
 class Camera 
 {
 public:
-    explicit Camera(glm::vec3 const position);
+    explicit Camera(glm::vec3 const position, glm::vec3 const rotation);
 
     void move(glm::vec3 const dPos);
     void spin(glm::vec3 const dEulers);
@@ -13,7 +13,7 @@ public:
 
 private:
     glm::vec3 position;
-    glm::vec3 eulers { 0.0f, 0.0f, 0.0f };
+    glm::vec3 rotation;
     glm::vec3 const global_up { 0.0f, 0.0f, 1.0f};
 
     glm::vec3 forwards { 1.0f, 0.0f, 0.0f };
