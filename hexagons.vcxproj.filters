@@ -28,6 +28,12 @@
     <Filter Include="Source Files\utilities">
       <UniqueIdentifier>{39598386-2246-459b-bc70-9b34effa65f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\components">
+      <UniqueIdentifier>{40dd0c16-ada7-4d1d-a4bb-f1c24917ff7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\systems">
+      <UniqueIdentifier>{cd88fa19-2eba-49c7-a22c-50fc52567de2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -72,6 +78,15 @@
     <ClCompile Include="src\view\PolygonMesh.cpp">
       <Filter>Source Files\view</Filter>
     </ClCompile>
+    <ClCompile Include="src\systems\camera_system.cpp">
+      <Filter>Source Files\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\motion_system.cpp">
+      <Filter>Source Files\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\systems\render_system.cpp">
+      <Filter>Source Files\systems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dependencies\stb\stb_image.h">
@@ -112,6 +127,27 @@
     </ClInclude>
     <ClInclude Include="src\utilities\StringOps.h">
       <Filter>Source Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\camera_component.h">
+      <Filter>Source Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\physics_component.h">
+      <Filter>Source Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\render_component.h">
+      <Filter>Source Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\transform_component.h">
+      <Filter>Source Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\camera_system.h">
+      <Filter>Source Files\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\motion_system.h">
+      <Filter>Source Files\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\systems\render_system.h">
+      <Filter>Source Files\systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

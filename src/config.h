@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <cstdint>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -17,3 +18,4 @@
 #include <glm/gtc/type_ptr.hpp>
 
 using OpenGlId = uint32_t;
+using EntityId = uint32_t;

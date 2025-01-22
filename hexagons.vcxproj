@@ -26,6 +26,9 @@
     <ClCompile Include="src\model\camera.cpp" />
     <ClCompile Include="src\model\Object3d.cpp" />
     <ClCompile Include="src\model\scene.cpp" />
+    <ClCompile Include="src\systems\camera_system.cpp" />
+    <ClCompile Include="src\systems\motion_system.cpp" />
+    <ClCompile Include="src\systems\render_system.cpp" />
     <ClCompile Include="src\utilities\ObjReader.cpp" />
     <ClCompile Include="src\utilities\StringOps.cpp" />
     <ClCompile Include="src\view\cube_mesh.cpp" />
@@ -36,11 +39,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dependencies\stb\stb_image.h" />
+    <ClInclude Include="src\components\camera_component.h" />
+    <ClInclude Include="src\components\physics_component.h" />
+    <ClInclude Include="src\components\render_component.h" />
+    <ClInclude Include="src\components\transform_component.h" />
     <ClInclude Include="src\config.h" />
     <ClInclude Include="src\controller\app.h" />
     <ClInclude Include="src\model\camera.h" />
     <ClInclude Include="src\model\Object3d.h" />
     <ClInclude Include="src\model\scene.h" />
+    <ClInclude Include="src\systems\camera_system.h" />
+    <ClInclude Include="src\systems\motion_system.h" />
+    <ClInclude Include="src\systems\render_system.h" />
     <ClInclude Include="src\utilities\ObjReader.h" />
     <ClInclude Include="src\utilities\StringOps.h" />
     <ClInclude Include="src\view\cube_mesh.h" />
