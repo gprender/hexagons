@@ -34,6 +34,9 @@
     <Filter Include="Source Files\systems">
       <UniqueIdentifier>{cd88fa19-2eba-49c7-a22c-50fc52567de2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\factories">
+      <UniqueIdentifier>{f4aa6b23-a9d7-4876-9e41-7300320e1af3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -86,6 +89,9 @@
     </ClCompile>
     <ClCompile Include="src\systems\render_system.cpp">
       <Filter>Source Files\systems</Filter>
+    </ClCompile>
+    <ClCompile Include="src\factories\factory.cpp">
+      <Filter>Source Files\factories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="src\systems\render_system.h">
       <Filter>Source Files\systems</Filter>
+    </ClInclude>
+    <ClInclude Include="src\factories\factory.h">
+      <Filter>Source Files\factories</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

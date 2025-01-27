@@ -8,7 +8,6 @@
 App::App()
 {
     set_up_glfw();
-    renderer = std::make_shared<Renderer>(window);
 }
 
 App::~App() 
@@ -16,56 +15,52 @@ App::~App()
     glfwTerminate();
 }
 
+void App::set_up_opengl()
+{
+    glClearColor(0.25f, 0.5f, 0.75f, 1.0f);
+
+    //Set the rendering region to the actual screen size
+    int width = 0, height = 0;
+    glfwGetFramebufferSize(window, &width, &height);
+
+    glViewport(0/*left*/, 0/*top*/, width, height);
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LESS);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
+
+    std::vector<ShaderFileInfo> shader_infos {
+        { "src/shaders/vertex.glsl", GL_VERTEX_SHADER },
+        { "src/shaders/fragment.glsl", GL_FRAGMENT_SHADER }
+    };
+    shader_program = std::make_shared<Shader>(shader_infos);
+    shader = shader_program->get_id();
+
+    glUseProgram(shader);
+    OpenGlId projection_location = glGetUniformLocation(shader, "projection");
+    glm::mat4 projection(glm::perspective(45.0f, 640.0f / 480.0f, 0.1f, 10.0f));
+    glUniformMatrix4fv(projection_location, 1, GL_FALSE, glm::value_ptr(projection));
+}
+
+void App::make_systems()
+{
+    motion_system = std::make_shared<MotionSystem>();
+    camera_system = std::make_shared<CameraSystem>(shader, window);
+    render_system = std::make_shared<RenderSystem>(shader, window);
+}
+
 void App::run() 
 {
     while (!glfwWindowShouldClose(window)) 
     {
-        if (handle_input()) 
-            break;
+        motion_system->update(transform_components, physics_components);
 
-        scene.update({ 0.0f, 0.0f, 0.00f });
-        renderer->render(scene);
-    }
-}
+        bool should_close = camera_system->update(transform_components, camera_id, *camera_component);
+        if (should_close) break;
 
-bool App::handle_input() 
-{
-    //Keys
-    glm::vec3 dPos = { 0.0f, 0.0f, 0.0f };
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        dPos.x += 1.0f;
+        render_system->update(transform_components, render_components);
     }
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        dPos.y -= 1.0f;
-    }
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        dPos.x -= 1.0f;
-    }
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        dPos.y += 1.0f;
-    }
-    if (glm::length(dPos) > 0.1f) {
-        dPos = glm::normalize(dPos);
-        scene.move_camera(dPos);
-    }
-
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
-        return true;
-    }
-
-    //Mouse
-    glm::vec3 dEulers = { 0.0f, 0.0f, 0.0f };
-    double mouse_x, mouse_y;
-    glfwGetCursorPos(window, &mouse_x, &mouse_y);
-    glfwSetCursorPos(window, 320.0, 240.0);
-    glfwPollEvents();
-
-    dEulers.z = -0.01f * static_cast<float>(mouse_x - 320.0);
-    dEulers.y = -0.01f * static_cast<float>(mouse_y - 240.0);
-
-    scene.spin_camera(dEulers);
-
-    return false;
 }
 
 void App::set_up_glfw() 

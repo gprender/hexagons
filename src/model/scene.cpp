@@ -4,11 +4,16 @@
 
 #include "scene.h"
 
+float const pi = glm::pi<float>();
+float const dy = 1.5;
+float const dX = glm::sqrt(3);
+float const dx = dX / 2;
+
 
 Scene::Scene():
     camera(
-        {  0.0f, 0.0f, 5.0f }, // position
-        {  0.0f, -90.0f, 90.0f } // rotation
+        {  0.0f, -4.0f, 5.0f }, // position
+        {  0.0f, -45.0f, 90.0f } // rotation
     )
 {
     objects.emplace_back(glm::vec3{ 0.0f, 0.0f, 0.0f });

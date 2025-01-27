@@ -16,7 +16,7 @@ bool CameraSystem::update(
 	std::unordered_map<EntityId, TransformComponent>& transform_components, 
 	EntityId camera_id, 
 	CameraComponent& camera_component, 
-	float const scalar = 1.0f
+	float const scalar
 ) {
 	// build camera view matrix
 	auto& camera_transform = transform_components.at(camera_id);
@@ -51,8 +51,8 @@ bool CameraSystem::update(
 	{
 		// update camera position
 		position_delta = glm::normalize(position_delta);
-		camera_transform.position += (0.1f * position_delta.x * forwards);
-		camera_transform.position += (0.1f * position_delta.y * right);
+		camera_transform.position += (0.1f * position_delta.x * forwards * scalar);
+		camera_transform.position += (0.1f * position_delta.y * right * scalar);
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) 

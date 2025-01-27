@@ -17,6 +17,6 @@ public:
 	void update(
 		std::unordered_map<EntityId, TransformComponent>& transform_components,
 		std::unordered_map<EntityId, PhysicsComponent>& physics_components,
-		float const scalar = 1.0
+		float const scalar = 0.015f
 	);
 };

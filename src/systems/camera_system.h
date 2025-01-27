@@ -20,7 +20,7 @@ public:
 		std::unordered_map<EntityId, TransformComponent>& transform_components,
 		EntityId camera_id, 
 		CameraComponent& camera_component, 
-		float const scalar = 1.0f
+		float const scalar = 0.01f
 	);
 
 private:

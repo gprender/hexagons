@@ -8,7 +8,7 @@
 void MotionSystem::update(
 	std::unordered_map<EntityId, TransformComponent>& transform_components, 
 	std::unordered_map<EntityId, PhysicsComponent>& physics_components, 
-	float const scalar = 1
+	float const scalar
 ) {
 	for (auto const& [id, physics_component] : physics_components)
 	{
