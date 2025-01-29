@@ -12,20 +12,38 @@ CameraSystem::CameraSystem(OpenGlId shader, GLFWwindow* window):
 	window(window)
 { }
 
+
 bool CameraSystem::update(
-	std::unordered_map<EntityId, TransformComponent>& transform_components, 
-	EntityId camera_id, 
+	TransformComponent& camera_transform, 
 	CameraComponent& camera_component, 
-	float const scalar
-) {
-	// build camera view matrix
-	auto& camera_transform = transform_components.at(camera_id);
+	float const scalar) 
+{
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) 
+	{
+		// exit
+		return true;
+	}
+
+	update_orientation_vectors(camera_transform, camera_component);
+
+	update_position(camera_transform, camera_component, scalar);
+
+	update_rotation(camera_transform);
+
+	set_view(camera_transform, camera_component);
+
+	return false;
+}
+
+
+void CameraSystem::update_orientation_vectors(
+	TransformComponent& camera_transform, 
+	CameraComponent& camera_component)
+{
+	auto& [right, up, forwards] = camera_component;
+
 	float const theta = glm::radians(camera_transform.rotation.z);
 	float const phi = glm::radians(camera_transform.rotation.y);
-
-	glm::vec3& right = camera_component.relative_right;
-	glm::vec3& up = camera_component.relative_up;
-	glm::vec3& forwards = camera_component.relative_forwards;
 
 	forwards = {
 		glm::cos(theta) * glm::cos(phi),
@@ -34,14 +52,18 @@ bool CameraSystem::update(
 	};
 	right = glm::normalize(glm::cross(forwards, global_up));
 	up = glm::normalize(glm::cross(right, forwards));
+}
 
-	glm::mat4 view = glm::lookAt(camera_transform.position, camera_transform.position + forwards, up);
-	glUniformMatrix4fv(view_location, 1, GL_FALSE, glm::value_ptr(view));
 
-	// handle camera input
+void CameraSystem::update_position(
+	TransformComponent& camera_transform, 
+	CameraComponent& camera_component,
+	float const scalar)
+{
+	auto const& [right, up, forwards] = camera_component;
 
-	// keys
-	glm::vec3 position_delta { 0.0f, 0.0f, 0.0f };
+	// record WASD key input
+	glm::vec3 position_delta(0.0f);
 	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) position_delta.x += 1.0f;
 	if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) position_delta.y -= 1.0f;
 	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) position_delta.x -= 1.0f;
@@ -54,16 +76,14 @@ bool CameraSystem::update(
 		camera_transform.position += (0.1f * position_delta.x * forwards * scalar);
 		camera_transform.position += (0.1f * position_delta.y * right * scalar);
 	}
+}
 
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) 
-	{
-		// exit
-		return true;
-	}
 
-	// mouse
-	glm::vec3 rotation_delta { 0.0f, 0.0f, 0.0f };
-	double mouse_x, mouse_y;
+void CameraSystem::update_rotation(TransformComponent& camera_transform)
+{
+	// record mouse input
+	glm::vec3 rotation_delta(0.0f);
+	double mouse_x = 320.0, mouse_y = 240.0;
 	glfwGetCursorPos(window, &mouse_x, &mouse_y);
 	glfwSetCursorPos(window, 320.0, 240.0);
 	glfwPollEvents();
@@ -71,9 +91,17 @@ bool CameraSystem::update(
 	rotation_delta.z = -0.1f * static_cast<float>(mouse_x - 320.0);
 	rotation_delta.y = -0.1f * static_cast<float>(mouse_y - 240.0);
 
+	// update camera rotation
 	camera_transform.rotation.y = fminf(89.0f, fmaxf(-89.0f, camera_transform.rotation.y + rotation_delta.y));
-
 	camera_transform.rotation.z = std::fmod(camera_transform.rotation.z + rotation_delta.z, 360.0);
+}
 
-	return false;
+
+void CameraSystem::set_view(
+	TransformComponent& camera_transform, 
+	CameraComponent& camera_component) const
+{
+	auto const& [right, up, forwards] = camera_component;
+	glm::mat4 view = glm::lookAt(camera_transform.position, camera_transform.position + forwards, up);
+	glUniformMatrix4fv(view_location, 1, GL_FALSE, glm::value_ptr(view));
 }

@@ -17,14 +17,27 @@ public:
 	CameraSystem(OpenGlId shader, GLFWwindow* window);
 
 	bool update(
-		std::unordered_map<EntityId, TransformComponent>& transform_components,
-		EntityId camera_id, 
+		TransformComponent& camera_transform,
 		CameraComponent& camera_component, 
-		float const scalar = 0.01f
-	);
+		float const scalar = 0.015f);
 
 private:
 	OpenGlId view_location;
-	glm::vec3 const global_up = { 0.0f, 0.0f, 1.0f };
+	glm::vec3 const global_up { 0.0f, 0.0f, 1.0f };
 	GLFWwindow* window;
+
+	void update_orientation_vectors(
+		TransformComponent& camera_transform, 
+		CameraComponent& camera_component);
+
+	void update_position(
+		TransformComponent& camera_transform, 
+		CameraComponent& camera_component,
+		float const scalar);
+
+	void update_rotation(TransformComponent& camera_transform);
+
+	void set_view(
+		TransformComponent& camera_transform, 
+		CameraComponent& camera_component) const;
 };

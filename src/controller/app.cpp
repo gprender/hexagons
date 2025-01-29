@@ -39,7 +39,7 @@ void App::set_up_opengl()
 
     glUseProgram(shader);
     OpenGlId projection_location = glGetUniformLocation(shader, "projection");
-    glm::mat4 projection(glm::perspective(45.0f, 640.0f / 480.0f, 0.1f, 10.0f));
+    glm::mat4 projection(glm::perspective(45.0f, 640.0f / 480.0f, 0.1f, 50.0f));
     glUniformMatrix4fv(projection_location, 1, GL_FALSE, glm::value_ptr(projection));
 }
 
@@ -56,7 +56,7 @@ void App::run()
     {
         motion_system->update(transform_components, physics_components);
 
-        bool should_close = camera_system->update(transform_components, camera_id, *camera_component);
+        bool should_close = camera_system->update(transform_components.at(camera_id), *camera_component);
         if (should_close) break;
 
         render_system->update(transform_components, render_components);
@@ -72,6 +72,7 @@ void App::set_up_glfw()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
 
     window = glfwCreateWindow(640, 480, "Hello Window!", NULL, NULL);
+    glfwSetWindowPos(window, 320, 240);
 
     glfwMakeContextCurrent(window);
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
