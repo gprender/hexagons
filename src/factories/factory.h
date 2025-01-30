@@ -33,6 +33,8 @@ public:
 		glm::vec3 const positional_velocity,
 		glm::vec3 const rotational_velocity);
 
+	std::vector<EntityId> make_hexagonal_grid(int const rows, int const columns);
+
 private:
 	uint32_t entity_count = 0;
 	EntityId generate_entity_id();

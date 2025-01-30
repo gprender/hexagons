@@ -22,11 +22,7 @@ int main()
         app.physics_components, 
         app.render_components);
 
-    auto hex_id = factory.make_hexagon(
-        { 0.0f, 0.0f, 0.0f }, 
-        { 0.0f, 0.0f, 0.0f }, 
-        { 0.0f, 0.0f, 0.0f }, 
-        { 0.0f, 0.0f, 0.0f });
+    auto hex_ids = factory.make_hexagonal_grid(10, 10);
 
     EntityId camera_id = factory.make_camera({ 0.0f, -4.0f, 5.0f }, {  0.0f, -90.0f, 90.0f });
     app.camera_component = std::make_shared<CameraComponent>();

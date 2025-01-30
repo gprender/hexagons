@@ -63,6 +63,33 @@ EntityId EntityFactory::make_hexagon(
 	return entity_id;
 }
 
+std::vector<EntityId> EntityFactory::make_hexagonal_grid(int const nrows, int const ncolumns)
+{
+	static float const dX = glm::sqrt(3);
+	static float const dx = dX / 2;
+	static float const dy = 1.5;
+
+	std::vector<EntityId> foo;
+	foo.reserve(nrows * ncolumns);
+
+	for (int row = 0; row < nrows; row++)
+	{
+		for (int column = 0; column < ncolumns; column++)
+		{
+			make_hexagon(
+				glm::vec3{ 
+					(column * dX) + ((row % 2) * dx), 
+					(row * dy), 
+					0.0f },
+				glm::vec3(0.0f),
+				glm::vec3(0.0f),
+				glm::vec3(0.0f));
+		}
+	}
+
+	return foo;
+}
+
 RenderComponent EntityFactory::make_render_component(
 	std::string const& obj_filepath, 
 	std::string const& texture_filepath, 
